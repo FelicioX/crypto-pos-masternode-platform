@@ -1,1 +1,46 @@
-node_modules
+# Environment
+.env
+.env.*
+
+# Database configuration
+conn_db.php
+
+# Database dumps
+db/
+
+# Logs
+error_log
+*.log
+
+# Cache
+cache/
+tmp/
+
+# Node.js
+node_modules/
+
+# Composer
+vendor/bin/
+
+# IDE
+.vscode/
+.idea/
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Composer
+composer.lock
+
+# Package Managers
+package-lock.json
+yarn.lock
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# PHPUnit
+.phpunit.result.cache
