@@ -1,0 +1,253 @@
+<?php
+include("seguranca.php"); // Inclui o arquivo com o sistema de segurança
+protegePagina(); // Chama a função que protege a página
+include('fnc.php');
+include ("conn_db.php");
+include('ajax/crypt.php');
+verificaAdm();
+$select = "SELECT * FROM usuarios WHERE nome = 'lauro'";
+$result = mysqli_query($conect, $select); //resultado do select
+
+
+$row = mysqli_fetch_assoc($result);
+$id_moeda = $_POST["moeda"];
+
+$select = "SELECT * FROM car_dep WHERE `id` = '" . $id_moeda . "'";
+$result = mysqli_query($conect, $select); //resultado do select
+$moeda = mysqli_fetch_assoc($result);
+
+$select = "SELECT * FROM depositos WHERE `investidor` = '" . $_SESSION['usuarioNome'] . "' AND `status` = 1";
+$result = mysqli_query($conect, $select); //resultado do select
+$dep_mut = 0;
+//echo $_SESSION['usuarioNome'];
+while ($row = mysqli_fetch_array($result)) {
+	if($row['moeda'] == "mutualcoin"){
+		$dep_mut += $row["qnt"];
+	}
+	
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>EcoStake - Dashboard</title>
+
+    <!-- Bootstrap core CSS-->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    
+
+      <?php include('top.php'); ?>
+
+    <div id="wrapper" style='padding-top: 50px;'>
+
+      <?php include('sidebar.php'); ?>
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb" style='margin-top:35 px;'>
+            <li class="breadcrumb-item">
+              <a href="#">Admin</a>
+            </li>
+            <li class="breadcrumb-item active">Moedas</li>
+          </ol>
+          <!-- DataTables Example -->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+              Adm - Moedas</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <div id="tabela">
+					<form id='formMoeda' method="post">
+					<?php echo "<input type='hidden' name='moeda' id='moeda' value='" . $moeda['id'] . "'>"; ?>		
+						<div class="form-label-group">
+							<input class="form-control" aria-describedby="nome" type="text" name="nome" id="nome" maxlength="50"/>
+							<label for="qtmoedasHelp">Nome</label>
+						</div><br>
+						<div class="form-label-group">
+							<input class="form-control" aria-describedby="ticker" type="text" name="ticker" id="ticker" maxlength="50"/>
+							<label for="ctSaque">Ticker</label>
+						</div><br>
+						<div class="form-label-group">
+							<input class="form-control" aria-describedby="carteira" type="carteira" name="carteira" id="carteira" maxlength="70"/>
+							<label for="txid">Carteira</label>
+						</div>
+						<div class="form-check">
+						  <input class="form-check-input" type="checkbox" value="" id="mn">
+						  <label class="form-check-label" for="mn">
+							MasterNode
+						  </label>
+						</div>
+						<div class="form-check">
+						  <input class="form-check-input" type="checkbox" value="" id="stake">
+						  <label class="form-check-label" for="stake">
+							Stake
+						  </label>
+						</div>
+						<div class="form-label-group">
+							<input class="form-control" aria-describedby="collateral" type="collateral" name="collateral" id="collateral" maxlength="70"/>
+							<label for="txid">Masternode Collateral</label>
+						</div>
+						<div class="form-label-group">
+							<input class="form-control" aria-describedby="info" type="info" name="info" id="info" maxlength="70"/>
+							<label for="txid">Info / Site</label>
+						</div>
+						<div>
+							<input class="btn btn-primary" type="submit" id="confima" value="* campos vazios" disabled />
+						</div>
+					</form>
+				</div>
+              </div>
+            </div>
+        </div>
+		<!-- DataTables Example -->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+              Add Moedas</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <div id='AddMoeda' >
+					<button data-toggle="modal" data-target="#myModal" class="btn btn-default" id='btini' onClick='adicionarMoeda();'><b>Add</b></button>
+				</div>
+              </div>
+            </div>
+        </div>
+        <!-- /.
+        <!-- /.container-fluid -->
+
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright © EcoStake 2018</span>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+      <!-- /.content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="logout.php">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+	<!-- Details Modal-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="mtitulo">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body" id='mbody'>Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" type="button" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+	<!-- Details Modal-->
+    <div class="modal fade" id="Logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="mtitulo">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body" id='mbody'>Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" type="button" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+
+    <!-- Demo scripts for this page-->
+    <script src="js/demo/datatables-demo.js"></script>
+
+  </body>
+<script type="text/javascript" language="javascript">
+function adicionarMoeda(){
+	
+	$('#mtitulo').html("Dados da Moeda");
+    
+	var dados = '';
+	$.ajax({
+		type: 'POST',
+		//dataType: 'json',
+		url: 'ajax/adicionar_moeda.php',
+		async: true,
+		data: dados,
+		success: function(response) {
+			//location.reload();
+			$('#mbody').html(response);
+		}
+	});
+}
+</script>
+</html>
