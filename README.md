@@ -1,70 +1,221 @@
-# [Start Bootstrap - SB Admin](https://startbootstrap.com/template-overviews/sb-admin/)
+# Crypto PoS Masternode Platform
 
-[SB Admin](http://startbootstrap.com/template-overviews/sb-admin/) is an open source, admin dashboard template for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).
+An open-source cryptocurrency staking platform designed for managing **Proof-of-Stake (PoS)** and **Masternode** assets through a unified web interface.
 
-## Preview
+Originally developed as the **EcoStake Pool**, this platform provided automated reward distribution, wallet management, deposit and withdrawal processing, staking cycles, and an administration dashboard supporting multiple blockchain networks.
 
-[![SB Admin Preview](https://startbootstrap.com/assets/img/templates/sb-admin.jpg)](https://blackrockdigital.github.io/startbootstrap-sb-admin/)
+This repository preserves the original source code and architecture as part of a software engineering and blockchain infrastructure portfolio.
 
-**[View Live Preview](https://blackrockdigital.github.io/startbootstrap-sb-admin/)**
+---
 
-## Status
+## Overview
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/BlackrockDigital/startbootstrap-sb-admin/master/LICENSE)
-[![npm version](https://img.shields.io/npm/v/startbootstrap-sb-admin.svg)](https://www.npmjs.com/package/startbootstrap-sb-admin)
-[![Build Status](https://travis-ci.org/BlackrockDigital/startbootstrap-sb-admin.svg?branch=master)](https://travis-ci.org/BlackrockDigital/startbootstrap-sb-admin)
-[![dependencies Status](https://david-dm.org/BlackrockDigital/startbootstrap-sb-admin/status.svg)](https://david-dm.org/BlackrockDigital/startbootstrap-sb-admin)
-[![devDependencies Status](https://david-dm.org/BlackrockDigital/startbootstrap-sb-admin/dev-status.svg)](https://david-dm.org/BlackrockDigital/startbootstrap-sb-admin?type=dev)
+The platform was designed to simplify participation in Proof-of-Stake and Masternode cryptocurrencies by allowing users to deposit supported coins into a shared staking pool and automatically receive staking rewards proportional to their holdings.
 
-## Download and Installation
+Main features include:
 
-To begin using this template, choose one of the following options to get started:
-* [Download the latest release on Start Bootstrap](https://startbootstrap.com/template-overviews/sb-admin/)
-* Install via npm: `npm i startbootstrap-sb-admin`
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-sb-admin.git`
-* [Fork, Clone, or Download on GitHub](https://github.com/BlackrockDigital/startbootstrap-sb-admin)
+- Multi-currency PoS and Masternode support
+- User authentication and account management
+- Cryptocurrency deposits and withdrawals
+- Wallet integration
+- Automated staking reward distribution
+- Masternode management
+- Administrative dashboard
+- Coin management
+- Reward history
+- Transaction history
+- Responsive web interface
 
-## Usage
+---
 
-### Basic Usage
+## Screenshots
 
-After downloading, simply edit the HTML and CSS files included with the template in your favorite text editor to make changes. These are the only files you need to worry about, you can ignore everything else! To preview the changes you make to the code, you can open the `index.html` file in your web browser.
+### Landing Page
 
-### Advanced Usage
+<img width="1341" height="627" alt="4" src="https://github.com/user-attachments/assets/44c7ac24-623b-4d4e-bf80-1708c54127f4" />
 
-After installation, run `npm install` and then run `gulp dev` which will open up a preview of the template in your default browser, watch for changes to core template files, and live reload the browser when changes are saved. You can view the `gulpfile.js` to see which tasks are included with the dev environment.
+### Supported Cryptocurrencies
 
-#### Gulp Tasks
+The platform was designed to support dozens of Proof-of-Stake and Masternode cryptocurrencies simultaneously.
 
-- `gulp` the default task that builds everything
-- `gulp dev` browserSync opens the project in your default browser and live reloads when changes are made
-- `gulp css` compiles SCSS files into CSS and minifies the compiled CSS
-- `gulp js` minifies the themes JS file
-- `gulp vendor` copies dependencies from node_modules to the vendor directory
+<img width="1333" height="577" alt="3" src="https://github.com/user-attachments/assets/428a757c-465c-4d4c-b2e8-a5e385d38045" />
 
-## Bugs and Issues
+### User Dashboard
 
-Have a bug or an issue with this template? [Open a new issue](https://github.com/BlackrockDigital/startbootstrap-sb-admin/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/sb-admin/).
+<img width="1359" height="635" alt="2 (4)" src="https://github.com/user-attachments/assets/c4da7048-a2a1-4fc5-9e46-b2f3b2256582" />
 
-## Custom Builds
+---
 
-You can hire Start Bootstrap to create a custom build of any template, or create something from scratch using Bootstrap. For more information, visit the **[custom design services page](https://startbootstrap.com/bootstrap-design-services/)**.
+## Main Features
 
-## About
+### User System
 
-Start Bootstrap is an open source library of free Bootstrap templates and themes. All of the free templates and themes on Start Bootstrap are released under the MIT license, which means you can use them for any purpose, even for commercial projects.
+- User registration
+- Secure authentication
+- Password recovery
+- Account validation
 
-* https://startbootstrap.com
-* https://twitter.com/SBootstrap
+### Wallet Management
 
-Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**, Owner of [Blackrock Digital](http://blackrockdigital.io/).
+- Deposit addresses
+- Withdrawal requests
+- Balance management
+- Transaction history
 
-* http://davidmiller.io
-* https://twitter.com/davidmillerskt
-* https://github.com/davidtmiller
+### Proof-of-Stake Pool
 
-Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
+- Automated staking cycles
+- Reward calculation
+- Reward distribution
+- Multi-coin staking
 
-## Copyright and License
+### Masternode Support
 
-Copyright 2013-2018 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-sb-admin/blob/gh-pages/LICENSE) license.
+- Masternode monitoring
+- Masternode rewards
+- Collateral management
+
+### Administration
+
+- Coin management
+- User management
+- Deposit approval
+- Withdrawal approval
+- Statistics dashboard
+- Platform settings
+
+---
+
+## Technologies
+
+Backend
+
+- PHP
+- MySQL
+- AJAX
+- JavaScript
+- jQuery
+
+Frontend
+
+- HTML5
+- CSS3
+- Bootstrap
+- SCSS
+
+Infrastructure
+
+- Apache
+- Linux
+- Wallet RPC Integration
+- Cryptocurrency Daemons
+
+---
+
+## Repository Structure
+
+```
+ajax/
+css/
+images/
+js/
+scss/
+vendor/
+
+dashboard.php
+login.php
+register.php
+index.php
+README.md
+LICENSE
+```
+
+---
+
+## Supported Blockchain Features
+
+- Proof-of-Stake (PoS)
+- Masternodes
+- Wallet RPC communication
+- Reward distribution
+- Deposit processing
+- Withdrawal processing
+- Multi-wallet support
+
+Proof-of-Stake is a blockchain consensus mechanism where validators secure the network by staking cryptocurrency instead of performing energy-intensive mining, providing an efficient alternative to Proof-of-Work. :contentReference[oaicite:0]{index=0}
+
+---
+
+## Database
+
+The original production MySQL database is **not included** in this repository.
+
+The production environment contained operational data such as:
+
+- User accounts
+- Wallet balances
+- Deposits
+- Withdrawals
+- Reward history
+- Staking cycles
+- Platform statistics
+
+It has been intentionally omitted from the public repository to preserve historical operational data and follow good security practices.
+
+---
+
+## Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/FelicioX/crypto-pos-masternode-platform.git
+```
+
+Move the project to your web server directory.
+
+Configure your database connection.
+
+Configure wallet RPC credentials for supported cryptocurrencies.
+
+Start Apache and MySQL.
+
+Access:
+
+```
+http://localhost/
+```
+
+---
+
+## Requirements
+
+- PHP 7.x
+- MySQL / MariaDB
+- Apache or Nginx
+- Wallet daemon(s) with RPC enabled
+- Linux or Windows
+
+---
+
+## Security
+
+This repository is intended for educational and historical purposes.
+
+Sensitive production information, credentials and operational database contents have been removed before publication.
+
+---
+
+## License
+
+This project is distributed under the MIT License.
+
+See the LICENSE file for details.
+
+---
+
+## Historical Context
+
+EcoStake Pool operated as a multi-currency cryptocurrency staking platform supporting numerous Proof-of-Stake and Masternode blockchain projects through a centralized management interface.
+
+This repository preserves the application's architecture and implementation as a reference for blockchain infrastructure, web development and cryptocurrency platform engineering.
